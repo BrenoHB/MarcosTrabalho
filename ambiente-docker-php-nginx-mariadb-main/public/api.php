@@ -7,20 +7,29 @@ if ($authorizationHeader && preg_match('/Bearer\s+(.*)/', $authorizationHeader, 
     $token = $matches[1];
     
     // Verificar se a senha corresponde à senha válida
-    $validPassword = 'senha'; // Senha válida definida por você
+    $validPassword = 'qwe123@@'; // Senha válida definida por você
     
     if ($token === $validPassword) {
        
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
-require_once 'users.php';
+
+
+
 $method = $_SERVER['REQUEST_METHOD'];
 $params = $_GET;
 $endpoint = isset($params['endpoint']) ? $params['endpoint'] : '';
 $response = array();
+
 if ($method == 'GET') {
     if ($endpoint == 'users') {
+        require_once 'Models/users.php';
         $response = $users;
+
+    } elseif($endpoint == 'filmes') {
+        require_once 'Models/filmes.php';
+            $response = $filmes;
+
     } elseif ($endpoint == 'user' && isset($params['id'])) {
   
         $userId = $params['id'];
