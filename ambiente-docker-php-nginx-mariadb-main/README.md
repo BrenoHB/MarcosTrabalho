@@ -57,3 +57,8 @@ CREATE TABLE filme (
   duracao VARCHAR(120) NOT NULL,
   descricao VARCHAR(150)
 );
+
+
+## PostMAn  headers
+Authorization
+
